@@ -45,12 +45,17 @@ public class GoBoard {
 		if (!board[i][j].equals(E)) {
 			return false;
 		}
-		board[i][j] = turns++ % 2 == 0 ? B : W;
+		String stone = turns++ % 2 == 0 ? B : W;
+		setStone(stone, i, j);
 		
 		if (GoUtils.hasCaptured(this, i, j)) {
 			GoUtils.removeCaptured(this, i, j);
 		}
 		
 		return true;
+	}
+
+	public void setStone(String stone, int i, int j) {
+		board[i][j] = stone;
 	}
 }

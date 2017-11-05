@@ -345,4 +345,81 @@ public class GoUtilsTest {
 		GoUtils.mGoBoard = board;
 		assertTrue(GoUtils.hasCaptured(board, i, j));
 	}
+	
+	@Test
+	public void test_RemoveCaptured_ReplaceAllCapturedStonesWithEmptyStone_GivenAPositionSimpleOneEyedTerritory() {
+		String[][] m = new String[][] {
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, B, E, E, E, E},
+			{E, E, E, B, W, B, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+		};
+		GoBoard board = new GoBoard(m);
+		
+		int i = 4;
+		int j = 4;
+		GoUtils.removeCaptured(board, i, j);
+		assertEquals(E, board.getStone(i, j));
+	}
+	
+	@Test
+	public void test_RemoveCaptured_ReplaceAllCapturedStonesWithEmptyStone_GivenAPositionTwoEyedTerritory() {
+		String[][] m = new String[][] {
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, B, E, E, E, E},
+			{E, E, E, B, W, B, E, E, E},
+			{E, E, E, B, W, B, E, E, E},
+			{E, E, E, E, B, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+		};
+		GoBoard board = new GoBoard(m);
+		
+		int i = 4;
+		int j = 4;
+		GoUtils.removeCaptured(board, i, j);
+		assertEquals(E, board.getStone(i, j));
+		assertEquals(E, board.getStone(i + 1, j));
+	}
+	
+	@Test
+	public void test_RemoveCaptured_ReplaceAllCapturedStonesWithEmptyStone_GivenAPositionMultipleEyedTerritory() {
+		String[][] m = new String[][] {
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, B, B, E, E, E, E},
+			{E, E, B, W, W, B, B, B, E},
+			{E, E, E, B, W, B, W, B, E},
+			{E, E, E, B, W, W, W, B, E},
+			{E, E, E, E, B, W, B, E, E},
+			{E, E, E, E, E, B, E, E, E},
+			{E, E, E, E, E, E, E, E, E},
+		};
+		GoBoard board = new GoBoard(m);
+		
+		int i = 4;
+		int j = 4;
+		GoUtils.removeCaptured(board, i, j);
+		assertEquals(E, board.getStone(4, 4));
+		assertEquals(E, board.getStone(5, 4));
+		assertEquals(E, board.getStone(3, 3));
+		assertEquals(E, board.getStone(3, 4));
+		assertEquals(E, board.getStone(5, 5));
+		assertEquals(E, board.getStone(6, 5));
+		assertEquals(E, board.getStone(5, 6));
+		assertEquals(E, board.getStone(4, 6));
+		
+		assertEquals(B, board.getStone(3, 2));
+		assertEquals(B, board.getStone(2, 3));
+		assertEquals(B, board.getStone(2, 4));
+		assertEquals(B, board.getStone(3, 5));
+		assertEquals(B, board.getStone(6, 6));
+	}
 }

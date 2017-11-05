@@ -46,16 +46,23 @@ public class GoBoardTest {
 		assertFalse(boardDefault.place(0, 0));
 	}
 	
-//	@Test
-//	public void test_Place_RemovesOpponentStones_IfPlaceOnACapturingPosition() {
-//		boardDefault.place(5, 5);
-//		boardDefault.place(4, 3);
-//		boardDefault.place(6, 4);
-//		boardDefault.place(5, 4);
-//		boardDefault.place(4, 4);
-//		boardDefault.place(4, 5);
-//		boardDefault.place(5, 3);
-//		
-//		assertEquals(E, boardDefault.getStone(5, 4));
-//	}
+	@Test
+	public void test_Place_RemovesOpponentStones_IfPlaceOnACapturingPosition() {
+		boardDefault.place(5, 5);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(4, 3);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(6, 4);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(5, 4);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(4, 4);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(4, 5);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		boardDefault.place(5, 3);
+		System.out.print(GoBoardStringUtil.toString(boardDefault));
+		
+		assertEquals(E, boardDefault.getStone(5, 4));
+	}
 }
