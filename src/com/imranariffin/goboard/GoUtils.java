@@ -65,7 +65,6 @@ public class GoUtils {
 	}
 
 	public static void removeCaptured(GoBoard goBoard, int i, int j) {
-		String stone = goBoard.getStone(i, j);
 		int[][] sides = new int[][] {
 			{i - 1, j}, {i + 1, j}, 
 			{i, j - 1}, {i, j + 1},
@@ -77,12 +76,14 @@ public class GoUtils {
 		for (int[] side: sides) {
 			int ii = side[0];
 			int jj = side[1];
-			int n = mGoBoard.size();
-			boolean[][] visited = new boolean[n][n];
-			String neighbourStone = mGoBoard.getStone(ii, jj);
-			if (captured(visited, neighbourStone, i, j)) {
-				visited = new boolean[n][n];
-				remove(visited, neighbourStone, ii, jj);
+			if (mGoBoard.placeable(ii, jj)) {
+				int n = mGoBoard.size();
+				boolean[][] visited = new boolean[n][n];
+				String neighbourStone = mGoBoard.getStone(ii, jj);
+				if (captured(visited, neighbourStone, ii, jj)) {
+					visited = new boolean[n][n];
+					remove(visited, neighbourStone, ii, jj);
+				}	
 			}
 		}
 	}

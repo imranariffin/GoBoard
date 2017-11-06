@@ -58,4 +58,8 @@ public class GoBoard {
 	public void setStone(String stone, int i, int j) {
 		board[i][j] = stone;
 	}
+
+	public boolean placeable(int i, int j) {
+		return (i >= 0 && i < size && j >= 0 && j < size);
+	}
 }

@@ -354,17 +354,17 @@ public class GoUtilsTest {
 			{E, E, E, E, E, E, E, E, E},
 			{E, E, E, E, B, E, E, E, E},
 			{E, E, E, B, W, B, E, E, E},
-			{E, E, E, E, E, E, E, E, E},
+			{E, E, E, E, B, E, E, E, E},
 			{E, E, E, E, E, E, E, E, E},
 			{E, E, E, E, E, E, E, E, E},
 			{E, E, E, E, E, E, E, E, E},
 		};
 		GoBoard board = new GoBoard(m);
 		
-		int i = 4;
+		int i = 3;
 		int j = 4;
 		GoUtils.removeCaptured(board, i, j);
-		assertEquals(E, board.getStone(i, j));
+		assertEquals(E, board.getStone(4, 4));
 	}
 	
 	@Test

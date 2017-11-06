@@ -49,19 +49,12 @@ public class GoBoardTest {
 	@Test
 	public void test_Place_RemovesOpponentStones_IfPlaceOnACapturingPosition() {
 		boardDefault.place(5, 5);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(4, 3);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(6, 4);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(5, 4);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(4, 4);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(4, 5);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		boardDefault.place(5, 3);
-		System.out.print(GoBoardStringUtil.toString(boardDefault));
 		
 		assertEquals(E, boardDefault.getStone(5, 4));
 	}
