@@ -62,7 +62,7 @@ public class GoBoardStringUtil {
 				} else if (j == size - 1) {
 					sb.append(stone.equals(E)? "┤" : stone);
 				} else {
-					sb.append("┼─");
+					sb.append(stone.equals(E)? "┼─" : stone + "─");
 				}
 			}
 			sb.append("   ║\n");

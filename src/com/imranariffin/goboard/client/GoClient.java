@@ -56,7 +56,11 @@ public class GoClient {
 		int i = Integer.parseInt(pos[0]) - 1;
 		int j = Integer.parseInt(pos[1]) - 1;
 
-		board.place(i, j);
-		System.out.print(GoBoardStringUtil.toString(board));
+		boolean ret = board.place(i, j);
+		if (!ret) {
+			System.out.println("Invalid move: Cannot place on acquired position");
+		} else {
+			System.out.print(GoBoardStringUtil.toString(board));	
+		}
 	}
 }
